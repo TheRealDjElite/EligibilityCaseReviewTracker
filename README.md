@@ -30,3 +30,62 @@ Built for remote Medicaid/SNAP/TANF teams that need an accurate and auditable wa
 
 Made with 💡 by #EliteTheOctoDog 🐙🐶
 [LinkedIn →](https://linkedin.com/in/JoeNetherland)
+
+<details>
+<summary>📘 Instructions for Non-Technical Users (Click to Expand)</summary>
+
+### 💡 How to Use This Tool (No Tech Skills Needed)
+
+This tool checks your eligibility case data for missing or incorrect information, and flags any issues for review. You don’t need technical knowledge to use it.
+
+---
+
+### ✅ What You’ll Need:
+1. A computer with Excel (or Google Sheets)
+2. Python installed on your system (download at: https://www.python.org/downloads)
+3. Your case data saved as a `.csv` file (can be exported from Excel or Google Sheets)
+
+---
+
+### 🧭 Step-by-Step Instructions
+
+#### 1. Download the Tool
+- Go to:  
+  [https://github.com/TheRealDjElite/EligibilityCaseReviewTracker](https://github.com/TheRealDjElite/EligibilityCaseReviewTracker)
+- Click the green **Code** button → **Download ZIP**
+- Unzip the folder
+
+#### 2. Open the Folder
+- Find the file: `data_checker.py`
+
+#### 3. Run the Tool
+- On **Windows**:
+  - Inside the folder, click the **address bar**, type `cmd`, and press **Enter**
+  - In the black window that opens, type:
+    ```
+    python data_checker.py
+    ```
+
+- On **Mac**:
+  - Open the **Terminal**
+  - Drag the folder into the Terminal after typing:
+    ```
+    cd 
+    ```
+    Then press **Enter**
+  - Run the script:
+    ```
+    python3 data_checker.py
+    ```
+
+#### 4. See Your Results
+- The tool will show any missing or invalid data
+- It will create an `error_report.csv` file with the flagged issues
+- Open the `error_report.csv` file in Excel or Google Sheets to see what needs fixing
+
+---
+
+### 👩‍💼 Example Use
+You’re checking SNAP, TANF, or Medicaid eligibility cases submitted by case managers. After running this tool, you’ll see which records have missing data, invalid dates, or mismatched status — and then you can fix them quickly before they’re submitted.
+
+</details>
