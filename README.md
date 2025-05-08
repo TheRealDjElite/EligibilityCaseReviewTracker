@@ -28,7 +28,7 @@ Built for remote Medicaid/SNAP/TANF teams that need an accurate and auditable wa
 
 ---
 
-Made with 💡 by #EliteTheOctoDog™ 🐙🐶
+Made with 💡 by **Joseph Netherland (TheRealDjElite)**  
 [LinkedIn →](https://linkedin.com/in/JoeNetherland)
 
 <details>
@@ -86,6 +86,4 @@ This tool checks your eligibility case data for missing or incorrect information
 ---
 
 ### 👩‍💼 Example Use
-You’re checking SNAP, TANF, or Medicaid eligibility cases submitted by case managers. After running this tool, you’ll see which records have missing data, invalid dates, or mismatched status — and then you can fix them quickly before they’re submitted.
-
-</details>
+You’re checking SNAP, TANF, or Medicaid eligibility cases submitted by case managers. After running this tool, you’ll see which records have missing data, invalid dates, or mismatched status — and then you can fix them quickly before they’re submi
