@@ -1,6 +1,7 @@
 # Eligibility Case Review Tracker
 
-A tool to help QA analysts and case reviewers track eligibility cases (SNAP, TANF, Medicaid) and identify common data issues using Python and Excel.
+_Applied learning prototype. Built with Python and Excel using AI assistance. Not a production system._
+Tracks eligibility case reviews for Medicaid, SNAP, and TANF using CSV or Excel inputs, flags basic data issues, and exports a simple report. 
 
 ## 🔍 What It Does
 - Tracks eligibility case reviews across public programs
