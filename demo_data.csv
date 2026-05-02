@@ -1,0 +1,6 @@
+Case ID,Client Name,Program,Status,Review Date
+1001,Alice Johnson,SNAP,Approved,2025-04-10
+1002,Bob Smith,TANF,Pending,2025-04-12
+1003,,SNAP,Denied,2025-04-13
+1004,Dana Lee,Medicaid,,2025-04-15
+1005,Evan Cruz,TANF,Approved,
