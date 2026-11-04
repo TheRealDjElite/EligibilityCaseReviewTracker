@@ -1,34 +1,34 @@
 # 🔍 Eligibility Case Review Tracker
 
-Python-based data validation tool designed to support QA and structured data review in high-volume operational environments. Built around rule-based checks to identify missing, invalid, or inconsistent data before downstream processing or reporting.
+Python-based review tool that flags incomplete case records for follow-up. Designed to support QA and structured case review in high-volume operational environments.
 
-Processes CSV or Excel inputs and generates a clear output of data quality issues for review.
+Reads case data from a CSV file, identifies records with missing information, and saves a flagged copy for review.
 
 ## 🔧 What It Does
 
-- Loads structured data from CSV or Excel files  
-- Applies validation checks for missing, invalid, or inconsistent values such as dates, IDs, and key fields  
-- Flags records that require review based on defined rules  
-- Outputs results to `error_report.csv` for QA or audit follow-up  
+- Loads case records from `demo_data.csv`
+- Identifies rows with any missing values
+- Identifies rows with blank client names
+- Adds a "Flag - Missing Info" column and saves results to `review_output.csv`
 
 ## 🧰 Tools Used
 
-- Python (pandas)  
-- Microsoft Excel  
-- CSV and Excel structured data formats  
+- Python (pandas, AI-assisted development)
+- Microsoft Excel (input template)
 
 ## 📁 File Overview
 
-- `demo_data.csv` - Sample dataset for testing  
-- `data_checker.py` - Validation and rule-checking script  
-- `tracker_template.xlsx` - Optional structured input template  
+- `demo_data.csv` - Sample case dataset for testing
+- `data_checker.py` - Script that checks records and flags missing information
+- `tracker_template.xlsx` - Excel template with the same column layout for entering case data
 
 ## ▶ How to Use It
 
-1. Populate `demo_data.csv` or use the Excel template  
-2. Run `data_checker.py`  
-3. Review `error_report.csv` for flagged issues  
+1. Enter case data in `demo_data.csv` (the Excel template shows the column layout)
+2. Install dependencies: `pip install pandas`
+3. Run `data_checker.py`
+4. Review `review_output.csv` for flagged records
 
 ## 📌 Purpose
 
-Built to reflect real-world data validation and QA workflows across regulated and high-volume environments. Focuses on improving data integrity, enforcing consistency, and reducing rework by identifying issues early in the process.
+Built to reflect real-world case review and QA workflows in regulated, high-volume environments. Focuses on catching incomplete records early so they can be corrected before review or reporting.
