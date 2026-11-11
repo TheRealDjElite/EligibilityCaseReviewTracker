@@ -16,6 +16,12 @@ Reads case data from a CSV or Excel file, checks each record for missing informa
 
 `demo_data.csv` includes 8 case records: 3 complete records and 5 with intentional issues (missing or blank client names, missing status, missing program, and decided cases with no review date). Case ID 1006 is a pending case with no review date and is not flagged.
 
+## 📊 Sample Output
+
+Running the script on the sample data checks 8 cases and marks 5 as Needs Review, each with a note explaining the flag.
+
+![Review output generated from the sample data](images/review_output.png)
+
 ## 🧰 Tools Used
 
 - Python (pandas, AI-assisted development)
@@ -26,6 +32,7 @@ Reads case data from a CSV or Excel file, checks each record for missing informa
 - `data_checker.py` - Script that reviews each case and adds a review status and notes
 - `demo_data.csv` - Sample case dataset for testing
 - `tracker_template.xlsx` - Excel template with the same column layout for entering case data
+- `images/review_output.png` - Screenshot of the review output from the sample data
 
 ## ▶ How to Use It
 
@@ -34,7 +41,6 @@ Reads case data from a CSV or Excel file, checks each record for missing informa
 3. If using the Excel template, change `INPUT_FILE` in the script to `tracker_template.xlsx`
 4. Run `data_checker.py`
 5. Review `review_output.csv` for cases marked Needs Review
-
 ## 📌 Purpose
 
 Built to reflect real-world case review and QA workflows in regulated, high-volume environments. Focuses on catching incomplete records early so they can be corrected before review or reporting.
