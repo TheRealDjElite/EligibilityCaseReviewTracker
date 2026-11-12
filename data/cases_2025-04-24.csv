@@ -1,0 +1,13 @@
+Case ID,Client Name,Program,Status,Review Date,Worker
+1001,Alice Johnson,SNAP,Approved,2025-04-10,Keoni
+1002,Bob Smith,TANF,Pending,,Leilani
+1003,Carla Diaz,SNAP,Denied,2025-04-11,Keoni
+1004,Dana Lee,Medicaid,,2025-04-11,Leilani
+1005,Evan Cruz,TANF,Approved,2025-04-18,Keoni
+1006,Faith Kim,Medicaid,Approved,2025-04-22,Mele
+1007,   ,TANF,Pending,2025-04-12,Mele
+1008,Gina Park,SNAP,Denied,,Leilani
+1009,Henry Wong,SNAP,Pending,,Mele
+1010,Iris Tanaka,Medicaid,Approved,2025-04-13,Mele
+1011,Jason Ito,TANF,Approved,,Keoni
+1012,Kim Nguyen,,Pending,,Mele

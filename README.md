@@ -1,46 +1,73 @@
 # 🔍 Eligibility Case Review Tracker
 
-Python-based review tool that flags incomplete case records for follow-up. Designed to support QA and structured case review in high-volume operational environments.
+Python and Excel tool for tracking case review issues from the first flag to the fix. Built for QA and case review teams who need to know what is still open, who owns each fix, and which follow-ups are past due.
 
-Reads case data from a CSV or Excel file, checks each record for missing information and missing review dates on decided cases, and saves a copy with a review status and notes for each case.
+Each run checks case records for missing information, then updates a running review log in Excel. New issues get added with a follow-up due date. Issues still in the data carry forward and age. Issues no longer in the data are marked Resolved with the date. Reviewer notes typed into the log stay in place between runs.
 
 ## 🔧 What It Does
 
-- Loads case records from a CSV file or the Excel template (`.xlsx`)
-- Flags records missing a Case ID, Client Name, Program, or Status (including blank or space-only entries)
+**Case checks**
+- Flags records missing a Case ID, Client Name, Program, Status, or Worker (blank or space-only entries count as missing)
 - Flags approved or denied cases with no review date (pending cases without one are allowed)
-- Adds a "Review Status" column (Needs Review or OK) and a "Review Notes" column explaining each flag
-- Prints a summary of cases checked and cases needing review, and saves results to `review_output.csv`
+- Tracks each issue separately, so a case with two problems shows two log entries, and fixing one resolves only that entry
 
-## 🧪 Sample Data
+**Follow-up tracking across runs**
+- Assigns every new issue a follow-up due date (7 days by default, set in `FOLLOW_UP_DAYS`)
+- Marks open issues Overdue once the due date passes
+- Marks issues Resolved when the next run no longer finds them, and records the resolution date and days open
+- Reopens a resolved issue if the problem comes back, with the reopen date in the History column
+- Keeps anything typed in the Reviewer Notes column from one run to the next
 
-`demo_data.csv` includes 8 case records: 3 complete records and 5 with intentional issues (missing or blank client names, missing status, missing program, and decided cases with no review date). Case ID 1006 is a pending case with no review date and is not flagged.
+**Reporting**
+- Summary sheet with run totals (cases checked, new, resolved, reopened) and issue counts by worker
+- Worker counts are Excel `COUNTIFS` formulas, so they update if a reviewer edits the log
+- Review Log sorted Overdue first, then Open, then Resolved, with color-coded status and filters on every column
+- Cases This Run sheet showing each record with a Needs Review or OK status and notes
 
 ## 📊 Sample Output
 
-Running the script on the sample data checks 8 cases and marks 5 as Needs Review, each with a note explaining the flag.
+Review Log after the second sample run (April 24). Three issues from April 14 passed their due date without a fix, four were fixed, and two new issues came in.
 
-![Review output generated from the sample data](images/review_output.png)
+![Review Log after the second run](images/review_log.png)
+
+## 🧪 Sample Data
+
+Two snapshots of the same caseload, ten days apart:
+
+| File | Cases | What changes |
+|---|---|---|
+| `data/cases_2025-04-14.csv` | 10 | 6 cases with 7 issues: missing names (blank and spaces only), missing status, missing program, missing worker, decided cases with no review date |
+| `data/cases_2025-04-24.csv` | 12 | Cases 1003, 1005, and 1009 fixed. Case 1008 has its program fixed but still no review date. Cases 1004 and 1007 untouched. New cases 1011 and 1012 arrive with issues |
+
+In the first file, cases 1002 and 1006 are pending with no review date and are not flagged.
 
 ## 🧰 Tools Used
 
-- Python (pandas, AI-assisted development)
-- Microsoft Excel (input template)
+- Python 3 (pandas, openpyxl), AI-assisted development
+- Microsoft Excel: input template with dropdowns and date validation, formatted output with `COUNTIFS` formulas, conditional formatting, filters, and frozen headers
 
 ## 📁 File Overview
 
-- `data_checker.py` - Script that reviews each case and adds a review status and notes
-- `demo_data.csv` - Sample case dataset for testing
-- `tracker_template.xlsx` - Excel template with the same column layout for entering case data
-- `images/review_output.png` - Screenshot of the review output from the sample data
+- `review_tracker.py` - Checks the case file, updates the review log, and writes the Excel report
+- `data/cases_2025-04-14.csv` - Sample caseload, first run
+- `data/cases_2025-04-24.csv` - Sample caseload, second run
+- `tracker_template.xlsx` - Blank input template with Program and Status dropdowns
+- `output/review_log.xlsx` - Review log produced by running both sample files in order
+- `images/review_log.png` - Screenshot of the Review Log sheet
 
 ## ▶ How to Use It
 
-1. Install dependencies: `pip install pandas openpyxl`
-2. Enter case data in `demo_data.csv` or `tracker_template.xlsx`
-3. If using the Excel template, change `INPUT_FILE` in the script to `tracker_template.xlsx`
-4. Run `data_checker.py`
-5. Review `review_output.csv` for cases marked Needs Review
+1. Install dependencies: `pip install -r requirements.txt`
+2. Delete `output/review_log.xlsx` to start a fresh log
+3. Run the first sample: `python review_tracker.py data/cases_2025-04-14.csv --run-date 2025-04-14`
+4. Open `output/review_log.xlsx` and add a note in the Reviewer Notes column, then save and close the file
+5. Run the second sample: `python review_tracker.py data/cases_2025-04-24.csv --run-date 2025-04-24`
+6. Open the log again. Your note is still there, and the statuses reflect the second run
+
+To use your own data, fill in `tracker_template.xlsx` (or any CSV with the same columns) and run `python review_tracker.py your_file.xlsx`. Leave off `--run-date` to use today's date.
+
+Records with no Case ID are tracked by their row number in the file. Assign a Case ID to keep tracking accurate if rows move.
+
 ## 📌 Purpose
 
-Built to reflect real-world case review and QA workflows in regulated, high-volume environments. Focuses on catching incomplete records early so they can be corrected before review or reporting.
+Built from case review work in high-volume eligibility programs, where a flagged error is only half the job. Someone has to fix the case, and someone has to confirm the fix happened. This tool keeps that loop visible: who owns each open issue, how long the issue has been open, and when the issue was closed.
