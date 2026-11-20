@@ -41,6 +41,10 @@ Two snapshots of the same caseload, ten days apart:
 
 In the first file, cases 1002 and 1006 are pending with no review date and are not flagged.
 
+## 👥 Roles and KPIs
+
+See [`ROLES_AND_KPIS.md`](ROLES_AND_KPIS.md) for a RACI matrix covering each step of the review process, 10 KPI definitions with tested Excel formulas and sample values, and notes on how run frequency affects time-to-resolve measures.
+
 ## 🧰 Tools Used
 
 - Python 3 (pandas, openpyxl), AI-assisted development
@@ -54,6 +58,7 @@ In the first file, cases 1002 and 1006 are pending with no review date and are n
 - `tracker_template.xlsx` - Blank input template with Program and Status dropdowns
 - `output/review_log.xlsx` - Review log produced by running both sample files in order
 - `images/review_log.png` - Screenshot of the Review Log sheet
+- `ROLES_AND_KPIS.md` - RACI matrix, KPI definitions with Excel formulas, and measurement notes
 
 ## ▶ How to Use It
 
