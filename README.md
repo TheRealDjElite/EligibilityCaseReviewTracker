@@ -36,8 +36,8 @@ Two snapshots of the same caseload, ten days apart:
 
 | File | Cases | What changes |
 |---|---|---|
-| `data/cases_2025-04-14.csv` | 10 | 6 cases with 7 issues: missing names (blank and spaces only), missing status, missing program, missing worker, decided cases with no review date |
-| `data/cases_2025-04-24.csv` | 12 | Cases 1003, 1005, and 1009 fixed. Case 1008 has its program fixed but still no review date. Cases 1004 and 1007 untouched. New cases 1011 and 1012 arrive with issues |
+| [`data/cases_2025-04-14.csv`](data/cases_2025-04-14.csv) | 10 | 6 cases with 7 issues: missing names (blank and spaces only), missing status, missing program, missing worker, decided cases with no review date |
+| [`data/cases_2025-04-24.csv`](data/cases_2025-04-24.csv) | 12 | Cases 1003, 1005, and 1009 fixed. Case 1008 has its program fixed but still no review date. Cases 1004 and 1007 untouched. New cases 1011 and 1012 arrive with issues |
 
 In the first file, cases 1002 and 1006 are pending with no review date and are not flagged.
 
@@ -52,24 +52,25 @@ See [`ROLES_AND_KPIS.md`](ROLES_AND_KPIS.md) for a RACI matrix covering each ste
 
 ## 📁 File Overview
 
-- `review_tracker.py` - Checks the case file, updates the review log, and writes the Excel report
-- `data/cases_2025-04-14.csv` - Sample caseload, first run
-- `data/cases_2025-04-24.csv` - Sample caseload, second run
-- `tracker_template.xlsx` - Blank input template with Program and Status dropdowns
-- `output/review_log.xlsx` - Review log produced by running both sample files in order
-- `images/review_log.png` - Screenshot of the Review Log sheet
-- `ROLES_AND_KPIS.md` - RACI matrix, KPI definitions with Excel formulas, and measurement notes
+- [`review_tracker.py`](review_tracker.py) - Checks the case file, updates the review log, and writes the Excel report
+- [`requirements.txt`](requirements.txt) - Python packages needed to run the tracker
+- [`data/cases_2025-04-14.csv`](data/cases_2025-04-14.csv) - Sample caseload, first run
+- [`data/cases_2025-04-24.csv`](data/cases_2025-04-24.csv) - Sample caseload, second run
+- [`tracker_template.xlsx`](tracker_template.xlsx) - Blank input template with Program and Status dropdowns
+- [`output/review_log.xlsx`](output/review_log.xlsx) - Review log produced by running both sample files in order
+- [`images/review_log.png`](images/review_log.png) - Screenshot of the Review Log sheet
+- [`ROLES_AND_KPIS.md`](ROLES_AND_KPIS.md) - RACI matrix, KPI definitions with Excel formulas, and measurement notes
 
 ## ▶ How to Use It
 
-1. Install dependencies: `pip install -r requirements.txt`
-2. Delete `output/review_log.xlsx` to start a fresh log
+1. Install the packages in [`requirements.txt`](requirements.txt): `pip install -r requirements.txt`
+2. Delete [`output/review_log.xlsx`](output/review_log.xlsx) to start a fresh log
 3. Run the first sample: `python review_tracker.py data/cases_2025-04-14.csv --run-date 2025-04-14`
 4. Open `output/review_log.xlsx` and add a note in the Reviewer Notes column, then save and close the file
 5. Run the second sample: `python review_tracker.py data/cases_2025-04-24.csv --run-date 2025-04-24`
 6. Open the log again. Your note is still there, and the statuses reflect the second run
 
-To use your own data, fill in `tracker_template.xlsx` (or any CSV with the same columns) and run `python review_tracker.py your_file.xlsx`. Leave off `--run-date` to use today's date.
+To use your own data, fill in [`tracker_template.xlsx`](tracker_template.xlsx) (or any CSV with the same columns) and run `python review_tracker.py your_file.xlsx`. Leave off `--run-date` to use today's date.
 
 Records with no Case ID are tracked by their row number in the file. Assign a Case ID to keep tracking accurate if rows move.
 
